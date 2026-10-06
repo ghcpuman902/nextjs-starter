@@ -4,12 +4,12 @@ A minimal, agent-friendly Next.js starter template. Private-ready — initialise
 
 ## Stack
 
-- **Next.js 16** (App Router)
-- **React 19**
-- **TypeScript**
-- **Tailwind CSS 4**
+- **Next.js 16.3** (App Router, Turbopack)
+- **React 19.3**
+- **TypeScript 5.9**
+- **Tailwind CSS 4.3**
 - **shadcn/ui** (base-nova, all components pre-installed)
-- **pnpm**
+- **pnpm 11**, **ESLint 9**, **Prettier 3**
 - **Zod**, **motion**, **lucide-react**
 
 ## Quick start
@@ -42,6 +42,7 @@ pnpm format     # Prettier
 | [docs/env.md](./docs/env.md) | Environment variables |
 | [docs/collaboration-workflow.md](./docs/collaboration-workflow.md) | Branches, PRs, collaborators |
 | [docs/agent-workflow.md](./docs/agent-workflow.md) | Agent and human workflow |
+| [docs/agent-skills.md](./docs/agent-skills.md) | Installed agent skills and how to update them |
 | [docs/design-system.md](./docs/design-system.md) | Tailwind and shadcn conventions |
 | [docs/coding-style.md](./docs/coding-style.md) | TypeScript and React style |
 | [docs/product-principles.md](./docs/product-principles.md) | Scoping and shipping principles |
@@ -49,7 +50,8 @@ pnpm format     # Prettier
 ## Agent context
 
 - [AGENTS.md](./AGENTS.md) — canonical agent instructions
-- [.cursor/rules/](./.cursor/rules/) — Cursor rules (stack, dev server policy)
+- [.cursor/rules/](./.cursor/rules/) — Cursor rules (stack, styling, dev server policy)
+- [.agents/skills/](./.agents/skills/) — project agent skills (Claude Code via `.claude/skills/` symlinks); see [docs/agent-skills.md](./docs/agent-skills.md)
 
 ## Official Next.js docs
 
@@ -60,10 +62,11 @@ pnpm format     # Prettier
 ## Upgrading Next.js
 
 ```bash
-pnpm add next@latest
-pnpm add -D eslint-config-next@latest
-pnpm build
+pnpm dlx @next/codemod@latest upgrade latest   # bumps next, react, types, eslint-config-next + runs codemods
+pnpm install && pnpm lint && pnpm typecheck && pnpm build
 ```
+
+The codemod may bump `eslint` to a new major; keep `eslint@^9` until `eslint-plugin-react` supports ESLint 10.
 
 ## Not included (by design)
 

@@ -55,3 +55,7 @@ Store project IDs, team slugs, or tokens in `VERCEL_PRIVATE_NOTES.md` (gitignore
 4. Merge to `main` for production deployment (if configured).
 
 See [collaboration-workflow.md](./collaboration-workflow.md) for team practices.
+
+## Agent deploy skill (not installed)
+
+`vercel-labs/agent-skills@deploy-to-vercel` is deliberately left out: it can commit and push to deploy, and its no-auth fallback uploads the project tarball to a public claimable deployment endpoint. Add it only if you want agents to deploy: `npx skills add vercel-labs/agent-skills --skill deploy-to-vercel -a claude-code cursor codex -y`.

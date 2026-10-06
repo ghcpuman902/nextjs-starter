@@ -8,6 +8,7 @@ Practical guidance for humans and coding agents working in this repo.
 - **Demoable increments** — Each change should be runnable and verifiable (`pnpm lint`, `pnpm build`, manual check in browser).
 - **Avoid large refactors** unless explicitly requested. Prefer incremental improvement.
 - **Read before coding** — For Next.js APIs, use `node_modules/next/dist/docs/` as source of truth.
+- **Use the project skills** — see [agent-skills.md](./agent-skills.md); e.g. `next-dev-loop` to verify changes against a running dev server.
 
 ## Branch and PR workflow
 
@@ -55,10 +56,10 @@ pnpm dev
 When a newer stable release is available:
 
 ```bash
-pnpm add next@latest
-pnpm add -D eslint-config-next@latest
-pnpm install
-pnpm build
+pnpm dlx @next/codemod@latest upgrade latest   # bumps next, react, types, eslint-config-next + runs codemods
+pnpm install && pnpm lint && pnpm typecheck && pnpm build
 ```
+
+The codemod may bump `eslint` to a new major; keep `eslint@^9` until `eslint-plugin-react` supports ESLint 10.
 
 Read the [upgrade guide](https://nextjs.org/docs/app/guides/upgrading) and any version-specific notes in `node_modules/next/dist/docs/` before merging.

@@ -44,15 +44,17 @@ Open [http://localhost:3000](http://localhost:3000). Press `d` to toggle dark mo
 - `components/ui/` — shadcn/ui components
 - `lib/utils.ts` — `cn()` helper
 - `.cursor/rules/` — Cursor agent rules
+- `.agents/skills/` — project agent skills ([agent-skills.md](./agent-skills.md))
 - `docs/` — setup and workflow documentation
 
 ## Upgrading Next.js
 
 ```bash
-pnpm add next@latest
-pnpm add -D eslint-config-next@latest
-pnpm build
+pnpm dlx @next/codemod@latest upgrade latest   # bumps next, react, types, eslint-config-next + runs codemods
+pnpm install && pnpm lint && pnpm typecheck && pnpm build
 ```
+
+The codemod may bump `eslint` to a new major; keep `eslint@^9` until `eslint-plugin-react` supports ESLint 10.
 
 See [agent-workflow.md](./agent-workflow.md) and the [official upgrade guide](https://nextjs.org/docs/app/guides/upgrading).
 
