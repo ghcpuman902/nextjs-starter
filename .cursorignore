@@ -1,0 +1,4 @@
+# Large skill-pack reference guides (on-demand via SKILL.md / Read).
+# Exclude from codebase indexing so they do not inflate context; keep on disk for skills.
+.agents/skills/**/REFERENCE.md
+.agents/skills/**/rules/
